@@ -1,0 +1,38 @@
+name: github.com/opspec-pkgs/jwt.encode
+description: encodes a json web token (JWT) according to [rfc7519](https://tools.ietf.org/html/rfc7519)
+icon: /icon.svg
+inputs:
+  header:
+    object:
+      description: '[JOSE Header](https://tools.ietf.org/html/rfc7519#section-5)'
+      default: { alg: none, typ: JWT }
+  claims:
+    object:
+      description: '[JWT Claims](https://tools.ietf.org/html/rfc7519#section-4)'
+      default: { sub: 1234567890, name: John Doe, admin: true }
+  secret:
+    string:
+      isSecret: true
+      description: secret to sign JWT with
+      default: secret
+  secretFormat:
+    string:
+      constraints: { enum: [utf8, hex, b64, b64u] }
+      default: utf8
+outputs:
+  result:
+    string:
+      description: encoded JWT
+version: 1.0.0
+run:
+  container:
+    image: { ref: 'opspecpkgs/jwt.encode:1.0.0' }
+    cmd: [node, /cmd.js]
+    envVars:
+      secret:
+      secretFormat:
+    files:
+      /cmd.js:
+      /result: $(result)
+      /header.json: $(header)
+      /claims.json: $(claims)
