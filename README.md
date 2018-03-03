@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/opspec-pkgs/jwt.encode.svg?branch=master)](https://travis-ci.org/opspec-pkgs/jwt.encode)
 
+<img src="icon.svg" alt="icon" height="100px">
+
 # Problem statement
 
 encodes a json web token (JWT) according to [rfc7519](https://tools.ietf.org/html/rfc7519)
@@ -10,30 +12,29 @@ this version of the pkg is in [![opspec 0.1.5](https://img.shields.io/badge/opsp
 
 # Example usage
 
-## install
+## Install
 
 ```shell
 opctl pkg install github.com/opspec-pkgs/jwt.encode#1.0.0
 ```
 
-## run
+## Run
 
 ```
 opctl run github.com/opspec-pkgs/jwt.encode#1.0.0
 ```
 
-## compose
+## Compose
 
 ```yaml
 op:
   pkg: { ref: github.com/opspec-pkgs/jwt.encode#1.0.0 }
   inputs:
-    # begin optional params
-    claims:
+    # params w/ default
     header:
+    claims:
     secret:
     secretFormat:
-    # end optional params
   outputs:
     result:
 ```

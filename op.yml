@@ -1,6 +1,5 @@
 name: github.com/opspec-pkgs/jwt.encode
 description: encodes a json web token (JWT) according to [rfc7519](https://tools.ietf.org/html/rfc7519)
-icon: /icon.svg
 inputs:
   header:
     object:
